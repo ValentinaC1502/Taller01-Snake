@@ -36,6 +36,7 @@ public class GUIView extends JPanel {
 
 	/**
 	 * Create a new GUIView. This will create a GameView and a GameController.
+	 * 
 	 * @param factory The factory to use for creating games.
 	 */
 	@SuppressWarnings("synthetic-access")
@@ -63,7 +64,7 @@ public class GUIView extends JPanel {
 
 		// Create a new button on that panel and add a StartGameListener as
 		// listener on that button
-		this.startGameButton = new JButton("Start Game");
+		this.startGameButton = new JButton("Iniciar");
 		this.startGameButton.addActionListener(new StartGameListener());
 		this.guiPanel.add(this.startGameButton);
 
@@ -97,10 +98,8 @@ public class GUIView extends JPanel {
 
 			if (source == GUIView.this.startGameButton) {
 				// Get the name of the game selected in the Choice
-				String gameName =
-						GUIView.this.gameChooser.getSelectedItem().toString();
-				GameModel gameModel =
-						GUIView.this.gameFactory.createGame(gameName);
+				String gameName = GUIView.this.gameChooser.getSelectedItem().toString();
+				GameModel gameModel = GUIView.this.gameFactory.createGame(gameName);
 
 				// Stop current game (if any) and start a new game with the
 				// new game model

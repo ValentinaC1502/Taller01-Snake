@@ -13,7 +13,8 @@ import java.util.List;
  * Initially 20 gold coins are randomly placed in the matrix. The red gold
  * collector aims to collect these coins which disappear after collection. Each
  * coin is randomly moved to a new position every n moves, where n is the number
- * of remaining coins. The game is won when all coins are collected and lost when
+ * of remaining coins. The game is won when all coins are collected and lost
+ * when
  * collector leaves game board.
  */
 public class GoldModel extends GameModel {
@@ -40,8 +41,6 @@ public class GoldModel extends GameModel {
 			return this.yDelta;
 		}
 	}
-	
-	
 
 	private static final int COIN_START_AMOUNT = 20;
 
@@ -59,10 +58,8 @@ public class GoldModel extends GameModel {
 			0),
 			new Color(255, 255, 0), 2.0);
 
-	
-			
 	/** Graphical representation of the collector */
-	private static final GameTile COLLECTOR_TILE = new RoundTile(Color.BLACK,
+	private static final GameTile COLLECTOR_TILE = new RoundTile(Color.RED,
 			Color.RED, 2.0);
 
 	/** Graphical representation of a blank tile. */
@@ -120,7 +117,7 @@ public class GoldModel extends GameModel {
 		// Loop until a blank position is found and ...
 		do {
 			newCoinPos = new Position((int) (Math.random() * size.width),
-										(int) (Math.random() * size.height));
+					(int) (Math.random() * size.height));
 		} while (!isPositionEmpty(newCoinPos));
 
 		// ... add a new coin to the empty tile.
@@ -156,7 +153,7 @@ public class GoldModel extends GameModel {
 				break;
 			case KeyEvent.VK_DOWN:
 				this.direction = Directions.SOUTH;
-				
+
 				break;
 			default:
 				// Don't change direction if another key is pressed
@@ -178,7 +175,7 @@ public class GoldModel extends GameModel {
 	 * game can update its state.
 	 * 
 	 * @param lastKey
-	 *            The most recent keystroke.
+	 *                The most recent keystroke.
 	 */
 	@Override
 	public void gameUpdate(final int lastKey) throws GameOverException {
@@ -218,14 +215,15 @@ public class GoldModel extends GameModel {
 	/**
 	 * 
 	 * @param pos The position to test.
-	 * @return <code>false</code> if the position is outside the playing field, <code>true</code> otherwise.
+	 * @return <code>false</code> if the position is outside the playing field,
+	 *         <code>true</code> otherwise.
 	 */
 	private boolean isOutOfBounds(Position pos) {
 		return pos.getX() < 0 || pos.getX() >= getGameboardSize().width
 				|| pos.getY() < 0 || pos.getY() >= getGameboardSize().height;
 	}
-	
-	public int getScore(){
+
+	public int getScore() {
 		return this.score;
 	}
 
